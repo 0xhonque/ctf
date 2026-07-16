@@ -1,0 +1,6 @@
+services:
+  rev-mov:
+    build: .
+    restart: always
+    ports:
+      - "6767:1337"

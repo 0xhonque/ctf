@@ -1,0 +1,29 @@
+(gdb) break strncmp
+Breakpoint 1 at 0x80490b0
+(gdb) handle SIGSEGV nostop noprint pass
+Signal        Stop      Print   Pass to program Description
+SIGSEGV       No        No      Yes             Segmentation fault
+(gdb) handle SIGILL nostop noprint pass
+Signal        Stop      Print   Pass to program Description
+SIGILL        No        No      Yes             Illegal instruction
+(gdb) run
+Starting program: /home/ctf/probset/ara7/mov/archive/mov
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Enter username: test
+Enter key: ARACTF_XXXX-YYYY-ZZZZ-AAAA-BBBB-CCCC-DDDD-EEEE_7.0
+
+Breakpoint 1, 0xf7f01b10 in ?? () from /lib/i386-linux-gnu/libc.so.6
+(gdb) x/s *(char **)($esp+4)
+0x887f9c0:      "nY4W"
+(gdb) x/s *(char **)($esp+8)
+0x887f9d0:      "nY4W"
+(gdb) finish
+Run till exit from #0  0xf7f01b10 in ?? () from /lib/i386-linux-gnu/libc.so.6
+0x080787ae in strcmp_wrap ()
+(gdb) set $eax = 0
+(gdb) c
+Continuing.
+
+Breakpoint 1, 0xf7f01b10 in ?? () from /lib/i386-linux-gnu/libc.so.6
+(gdb)
