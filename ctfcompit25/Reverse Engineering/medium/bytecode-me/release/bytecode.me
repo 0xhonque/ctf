@@ -1,0 +1,92 @@
+  0           RESUME                   0
+
+  1           LOAD_CONST               0 ('13171b180e20251c1d141f210e1b1849211b191322221e3347372f55242b3b234f3f3f2e2e552627404f402b39483f3d41484c4f3647')
+              STORE_NAME               0 (flag)
+
+  2           LOAD_CONST               1 ('pytecode')
+              STORE_NAME               1 (key)
+
+  4           LOAD_CONST               2 ('')
+              STORE_NAME               2 (user_input)
+
+  5           LOAD_CONST               2 ('')
+              STORE_NAME               3 (enc)
+
+  7           LOAD_NAME                4 (input)
+              PUSH_NULL
+              LOAD_CONST               3 ('enter flag: ')
+              CALL                     1
+              STORE_NAME               2 (user_input)
+
+  9           LOAD_NAME                5 (range)
+              PUSH_NULL
+              LOAD_NAME                6 (len)
+              PUSH_NULL
+              LOAD_NAME                2 (user_input)
+              CALL                     1
+              CALL                     1
+              GET_ITER
+      L1:     FOR_ITER                54 (to L2)
+              STORE_NAME               7 (i)
+
+ 10           LOAD_NAME                8 (ord)
+              PUSH_NULL
+              LOAD_NAME                2 (user_input)
+              LOAD_NAME                7 (i)
+              BINARY_SUBSCR
+              CALL                     1
+              LOAD_NAME                8 (ord)
+              PUSH_NULL
+              LOAD_NAME                1 (key)
+              LOAD_NAME                7 (i)
+              LOAD_NAME                6 (len)
+              PUSH_NULL
+              LOAD_NAME                1 (key)
+              CALL                     1
+              BINARY_OP                6 (%)
+              BINARY_SUBSCR
+              CALL                     1
+              BINARY_OP               12 (^)
+              STORE_NAME               9 (x)
+
+ 11           LOAD_NAME                9 (x)
+              LOAD_NAME                7 (i)
+              BINARY_OP                0 (+)
+              LOAD_CONST               4 (256)
+              BINARY_OP                6 (%)
+              STORE_NAME               9 (x)
+
+ 12           LOAD_NAME                3 (enc)
+              LOAD_NAME               10 (chr)
+              PUSH_NULL
+              LOAD_NAME                9 (x)
+              CALL                     1
+              BINARY_OP               13 (+=)
+              STORE_NAME               3 (enc)
+              JUMP_BACKWARD           56 (to L1)
+
+  9   L2:     END_FOR
+              POP_TOP
+
+ 14           LOAD_NAME                3 (enc)
+              LOAD_ATTR               23 (encode + NULL|self)
+              CALL                     0
+              LOAD_ATTR               25 (hex + NULL|self)
+              CALL                     0
+              LOAD_NAME                0 (flag)
+              COMPARE_OP              88 (bool(==))
+              POP_JUMP_IF_FALSE        9 (to L3)
+
+ 15           LOAD_NAME               13 (print)
+              PUSH_NULL
+              LOAD_CONST               5 ('👍')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             7 (None)
+
+ 17   L3:     LOAD_NAME               13 (print)
+              PUSH_NULL
+              LOAD_CONST               6 ('jangan dikasih tau 🤫')
+              CALL                     1
+              POP_TOP
+              RETURN_CONST             7 (None)
